@@ -1,0 +1,74 @@
+@article{Gao2015,
+abstract = {We demonstrate that a popular class of non-parametric mutual information (MI) estima-tors based on k-nearest-neighbor graphs re-quires number of samples that scales expo-nentially with the true MI. Consequently, ac-curate estimation of MI between two strongly dependent variables is possible only for pro-hibitively large sample size. This important yet overlooked shortcoming of the existing es-timators is due to their implicit reliance on local uniformity of the underlying joint dis-tribution. We introduce a new estimator that is robust to local non-uniformity, works well with limited data, and is able to capture rela-tionship strengths over many orders of mag-nitude. We demonstrate the superior perfor-mance of the proposed estimator on both syn-thetic and real-world data.},
+author = {Gao, Shuyang and Steeg, Greg Ver and Galstyan, Aram},
+file = {:Users/brekels/Documents/Mendeley Desktop/E Estimation of Mutual Information for Strongly Dependent Variables - Gao, Steeg, Galstyan.pdf:pdf},
+journal = {AISTATS},
+title = {{Estimation of Mutual Information for Strongly Dependent Variables}},
+year = {2015}
+}
+@article{Gao2015a,
+abstract = {Estimating mutual information (MI) from sam-ples is a fundamental problem in statistics, ma-chine learning, and data analysis. Recently it was shown that a popular class of non-parametric MI estimators perform very poorly for strongly de-pendent variables and have sample complexity that scales exponentially with the true MI. This undesired behavior was attributed to the reliance of those estimators on local uniformity of the un-derlying (and unknown) probability density func-tion. Here we present a novel semi-parametric estimator of mutual information, where at each sample point, densities are locally approximated by a Gaussians distribution. We demonstrate that the estimator is asymptotically unbiased. We also show that the proposed estimator has a supe-rior performance compared to several baselines, and is able to accurately measure relationship strengths over many orders of magnitude.},
+author = {Gao, Shuyang and Steeg, Greg Ver and Galstyan, Aram},
+file = {:Users/brekels/Documents/Mendeley Desktop/Estimating Mutual Information by Local Gaussian Approximation - Gao, Steeg, Galstyan.pdf:pdf},
+journal = {UAI},
+title = {{Estimating Mutual Information by Local Gaussian Approximation}},
+year = {2015}
+}
+@article{Steeg2015,
+abstract = {We introduce a new framework for unsupervised learning of deep representations based on a novel hierarchical decomposition of information. Intuitively, data is passed through a series of progressively fine-grained sieves. Each layer of the sieve recovers a single latent factor that is maximally informative about multivariate dependence in the data. The data is transformed after each pass so that the remaining unexplained information trickles down to the next layer. Ultimately, we are left with a set of latent factors explaining all the dependence in the original data and remainder information consisting of independent noise. We present a practical implementation of this framework for discrete variables and apply it to a variety of tasks including independent component analysis, lossy and lossless compression, and predicting missing values in data.},
+archivePrefix = {arXiv},
+arxivId = {1507.02284},
+author = {{Ver Steeg}, Greg and Galstyan, Aram},
+eprint = {1507.02284},
+file = {:Users/brekels/Documents/Mendeley Desktop/The Information Sieve - Ver Steeg, Galstyan.pdf:pdf},
+isbn = {9780307379573},
+issn = {15212912},
+journal = {ICML},
+pages = {12},
+title = {{The Information Sieve}},
+url = {https://arxiv.org/pdf/1507.02284v2.pdf},
+volume = {48},
+year = {2016}
+}
+@article{Gao2016,
+abstract = {Feature selection is one of the most fundamental problems in machine learning. An extensive body of work on information-theoretic feature selection exists which is based on maximizing mutual information between subsets of features and class labels. Practical methods are forced to rely on approximations due to the difficulty of estimating mutual information. We demonstrate that approximations made by existing methods are based on unrealistic assumptions. We formulate a more flexible and general class of assumptions based on variational distributions and use them to tractably generate lower bounds for mutual information. These bounds define a novel information-theoretic framework for feature selection, which we prove to be optimal under tree graphical models with proper choice of variational distributions. Our experiments demonstrate that the proposed method strongly outperforms existing information-theoretic feature selection approaches.},
+archivePrefix = {arXiv},
+arxivId = {1606.02827},
+author = {Gao, Shuyang and Steeg, Greg Ver and Galstyan, Aram},
+eprint = {1606.02827},
+file = {:Users/brekels/Documents/Mendeley Desktop/Variational Information Maximization for Feature Selection - Gao, Steeg, Galstyan.pdf:pdf},
+journal = {NIPS},
+title = {{Variational Information Maximization for Feature Selection}},
+url = {http://arxiv.org/abs/1606.02827},
+year = {2016}
+}
+@article{Steeg,
+abstract = {We introduce a method to learn a hierarchy of successively more abstract repre-sentations of complex data based on optimizing an information-theoretic objec-tive. Intuitively, the optimization searches for a set of latent factors that best ex-plain the correlations in the data as measured by multivariate mutual information. The method is unsupervised, requires no model assumptions, and scales linearly with the number of variables which makes it an attractive approach for very high dimensional systems. We demonstrate that Correlation Explanation (CorEx) auto-matically discovers meaningful structure for data from diverse sources including personality tests, DNA, and human language.},
+author = {{Ver Steeg}, Greg and Galstyan, Aram},
+file = {:Users/brekels/Documents/Mendeley Desktop/Discovering Structure in High-Dimensional Data Through Correlation Explanation - Ver Steeg, Galstyan.pdf:pdf},
+journal = {NIPS},
+title = {{Discovering Structure in High-Dimensional Data Through Correlation Explanation}},
+year = {2014}
+}
+@article{VerSteeg,
+author = {{Ver Steeg}, Greg and Gao, Shuyang and Reing, Kyle and Galstyan, Aram},
+file = {:Users/brekels/Documents/Mendeley Desktop/Sifting Common Information from Many Variables - Ver Steeg et al.pdf:pdf},
+journal = {arXiv},
+title = {{Sifting Common Information from Many Variables}},
+year = {2016}
+}
+@article{Steeg2014,
+abstract = {We consider a set of probabilistic functions of some input variables as a representation of the inputs. We present bounds on how informative a representation is about input data. We extend these bounds to hierarchical representations so that we can quantify the contribution of each layer towards capturing the information in the original data. The special form of these bounds leads to a simple, bottom-up optimization procedure to construct hierarchical representations that are also maximally informative about the data. This optimization has linear computational complexity and constant sample complexity in the number of variables. These results establish a new approach to unsupervised learning of deep representations that is both principled and practical. We demonstrate the usefulness of the approach on both synthetic and real-world data.},
+archivePrefix = {arXiv},
+arxivId = {1410.7404},
+author = {{Ver Steeg}, Greg and Galstyan, Aram},
+eprint = {1410.7404},
+file = {:Users/brekels/Documents/Mendeley Desktop/Maximally Informative Hierarchical Representations of High-Dimensional Data - Ver Steeg, Galstyan.pdf:pdf},
+isbn = {1410.7404},
+issn = {15337928},
+journal = {AISTATS},
+pages = {13},
+title = {{Maximally Informative Hierarchical Representations of High-Dimensional Data}},
+url = {http://arxiv.org/abs/1410.7404},
+year = {2015}
+}
