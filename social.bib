@@ -1,0 +1,576 @@
+@INPROCEEDINGS{Alipourfard2018wsdm,
+  author =       {Nazanin Alipourfard and Peter Fennell and Kristina Lerman},
+  title =        {Can you Trust the Trend? Discovering Simpson’s Paradoxes in Social Data},
+  booktitle =    {Proceedings of the 11th International ACM Conference on Web Search and Data Mining},
+  year =         {2018},
+  pages =        {},
+  publisher =    {ACM},
+  abstract =     {We investigate how Simpson’s paradox affects analysis of trends
+in social data. According to the paradox, the trends observed in
+data that has been aggregated over an entire population may be
+quite different from, and even opposite to, those of the underlying
+subgroups. Failure to take this effect into account can lead
+analysis to wrong conclusions. We present a statistical method to
+automatically identify Simpson’s paradox in data by comparing
+statistical trends in the aggregate data to those in the disaggregated
+subgroups. We apply the approach to data from Stack Exchange, a
+popular question-answering platform, to analyze factors affecting
+answerer performance, specifically, the likelihood that an answer
+provided by a user will be accepted by the asker as the best answer
+to his or her question. Our analysis confirms a known Simpson’s
+paradox and identifies several new instances. These paradoxes provide
+novel insights into user behavior on Stack Exchange.},
+  keywords =     {social-dynamics},
+}
+
+
+@ARTICLE{Lerman2017jcss,
+author="Lerman, Kristina and Marin, Luciano G.
+and Arora, Megha and de Lima, Lucas H. Costa  and Ferrara, Emilio and Garcia, David",
+title="Language, demographics, emotions, and the structure of online social networks",
+journal="Journal of Computational Social Science",
+year="2017",
+month="Oct",
+day="31",
+abstract="Social networks affect individuals' economic opportunities and well-being. However, few of the factors thought to shape networks---culture, language, education, and income---were empirically validated at scale. To fill this gap, we collected a large number of social media posts from a major US metropolitan area. By associating these posts with US Census tracts through their locations, we linked socioeconomic indicators to group-level signals extracted from social media, including emotions, language, and online social ties. Our analysis shows that tracts with higher education levels have weaker social ties, but this effect is attenuated for tracts with high ratio of Hispanic residents. Negative emotions are associated with more frequent online interactions, or stronger social ties, while positive emotions are associated with weaker ties. These results hold for both Spanish and English tweets, evidencing that language does not affect this relationship between emotion and social ties. Our findings highlight the role of cognitive and demographic factors in online interactions and demonstrate the value of traditional social science sources, like US Census data, within social media studies.",
+issn="2432-2725",
+doi="10.1007/s42001-017-0001-x",
+url="https://doi.org/10.1007/s42001-017-0001-x"
+}
+
+
+@INPROCEEDINGS{Agarwal2017quitting,
+  author =       {Tushar Agarwal and Keith Burghardt and Kristina Lerman},
+  title =        {On Quitting: Performance and Practice in Online Game Play},
+  booktitle =    {Proceedings of 11th AAAI International Conference on Web and Social Media},
+  year =         {2017},
+  editor =       {},
+  publisher =    {AAAI},
+  abstract =     {We study the relationship between performance and practice by analyzing the activity of many players of a casual online game. We find significant heterogeneity in the improvement of player performance, given by score, and address this by dividing players into similar skill levels and segmenting each player's activity into sessions, i.e., sequence of game rounds without an extended break. After disaggregating data, we find that performance improves with practice across all skill levels. More interestingly, players are more likely to end their session after an especially large improvement, leading to a peak score in their very last game of a session. In addition, success is strongly correlated with a lower quitting rate when the score drops, and only weakly correlated with skill, in line with psychological findings about the value of persistence and ``grit'': successful players are those who persist in their practice despite lower scores.
+Finally, we train an $\epsilon$-machine, a type of hidden Markov model, and find a plausible mechanism of game play that can predict player performance and quitting the game.
+Our work raises the possibility of real-time assessment and behavior prediction that can be used to optimize human performance.},
+  keywords =     {social-behavior},
+  url={https://arxiv.org/abs/1703.04696}
+}
+
+@INPROCEEDINGS{Ferrara2017dynamics,
+  author =       {Emilio Ferrara and Nazanin Alipourfard and Keith Burghardt and Chiranth Gopal and Kristina Lerman},
+  title =        {Dynamics of Content Quality in Collaborative Knowledge Production},
+  booktitle =    {Proceedings of 11th AAAI International Conference on Web and Social Media},
+  year =         {2017},
+  editor =       {},
+  publisher =    {AAAI},
+  abstract =     {We explore the dynamics of user performance in collaborative knowledge production by studying the quality of answers to questions posted  on Stack Exchange. We propose four indicators of answer quality: answer length, the number of code lines and hyperlinks to external web content it contains, and whether it is accepted by the asker as the most helpful answer to the question. Analyzing millions of answers posted over the period from 2008 to 2014, we uncover regular short-term and long-term changes in quality. In the short-term,
+quality deteriorates over the course of a single session, with each successive answer becoming shorter, with fewer code lines and links, and less likely to be accepted. In contrast, performance improves over the long-term, with more experienced users producing higher quality answers. These trends are not a consequence of data heterogeneity, but rather have a behavioral origin. Our findings highlight the complex interplay between short-term deterioration in performance, potentially due to mental fatigue or attention depletion, and long-term performance improvement due to learning and skill acquisition, and its impact on the quality of user-generated content.},
+  keywords =     {social-behavior},
+}
+
+@article{Burghardt2017myopia,
+    abstract = {Crowds can often make better decisions than individuals or small groups of experts by leveraging their ability to aggregate diverse information. Question answering sites, such as Stack Exchange, rely on the  ” wisdom of crowds” effect to identify the best answers to questions asked by users. We analyze data from 250 communities on the Stack Exchange network to pinpoint factors affecting which answers are chosen as the best answers. Our results suggest that, rather than evaluate all available answers to a question, users rely on simple cognitive heuristics to choose an answer to vote for or accept. These cognitive heuristics are linked to an answer's salience, such as the order in which it is listed and how much screen space it occupies. While askers appear to depend on heuristics to a greater extent than voters when choosing an answer to accept as the most helpful one, voters use acceptance itself as a heuristic, and they are more likely to choose the answer after it has been accepted than before that answer was accepted. These heuristics become more important in explaining and predicting behavior as the number of available answers to a question increases. Our findings suggest that crowd judgments may become less reliable as the number of answers grows.},
+    author = {Burghardt, Keith and Alsina, Emanuel F. and Girvan, Michelle and Rand, William and Lerman, Kristina},
+    citeulike-article-id = {14312610},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1371/journal.pone.0173610},
+    day = {16},
+    doi = {10.1371/journal.pone.0173610},
+    journal = {PLOS ONE},
+    keywords = {cognitive-constraints, cognitive-load, lerman, question-answering, wisdom-of-crowds},
+    month = mar,
+    number = {3},
+    pages = {e0173610+},
+    posted-at = {2017-03-17 00:37:42},
+    priority = {2},
+    publisher = {Public Library of Science},
+    title = {The myopia of crowds: Cognitive load and collective evaluation of answers on Stack Exchange},
+    url = {http://dx.doi.org/10.1371/journal.pone.0173610},
+    volume = {12},
+    year = {2017}
+}
+
+
+@INPROCEEDINGS{Abeliuk2017www,
+  author =       {Andrés Abeliuk and Gerardo Berbeglia and Pascal Van Hentenryck and Tad Hogg and Kristina Lerman},
+  title =        {Taming the Unpredictability of Cultural Markets with Social Influence},
+  booktitle =    {Proceedings of the 26th International World Wide Web Conference (WWW2017)},
+  year =         {2017},
+  pages =        {},
+  abstract =     {Unpredictability is often portrayed as an undesirable outcome of social in uence in cultural markets. Unpredictability stems from the ``rich get richer'' effect, whereby small fluctuations in the market share or popularity of products are amplified over time by social in uence. In this paper, we report results of an experimental study that shows that unpredictability is not an inherent property of social influence. We investigate strategies for creating markets in which the popularity of products is better aligned with their underlying quality. For our study, we created a cultural market of science stories and conducted randomized experiments on different policies for presenting the stories to study participants. Specically, we varied how the stories were ranked, and whether or not participants were shown the ratings these stories received from others. We present a policy that leverages social influence and product positioning to help distinguish the product's market share (popularity) from underlying quality. Highlighting products with the highest estimated quality reduces the ``rich get richer'' effect of using popularity directly. We show that this policy allows us to more robustly and predictably identify high quality products and promote blockbusters. The policy can be used to create more efficient online cultural markets with a better allocation of resources to products.},
+  keywords =     {social-dynamics},
+}
+
+@INPROCEEDINGS{Kooti2017wsdm,
+  author =       {Farshad Kooti and Mihajlo Grbovic and Luca Maria Aiello and Eric Bax and Kristina Lerman},
+  title =        {iPhone's Digital Marketplace: Characterizing the Big Spenders},
+  booktitle =    {Proceedings of the 10th International ACM Conference on Web Search and Data Mining},
+  year =         {2017},
+  pages =        {},
+  publisher =    {ACM},
+  abstract =     {With mobile shopping surging in popularity, people are spending ever more money on digital purchases through their mobile devices and phones. However, few large-scale studies of mobile shopping exist. In this paper we analyze a large data set consisting of more than 776M digital purchases made on Apple mobile devices that include songs, apps, and in-app purchases. We find that 61\% of all the spending is on in-app purchases and that the top 1\% of users are responsible for 59\% of all the spending. These big spenders are more likely to be male and older, and less likely to be from the US. We study how they adopt and abandon individual app, and find that, after an initial phase of increased daily spending, users gradually lose interest: the delay between their purchases increases and the spending decreases with a sharp drop toward the end. Finally, we model the in-app purchasing behavior in multiple steps: 1) we model the time between purchases; 2) we train a classifier to predict whether the user will make a purchase from a new app or continue purchasing from the existing app; and 3) based on the outcome of the previous step, we attempt to predict the exact app, new or existing, from which the next purchase will come. The results yield},
+  keywords =     {social-dynamics},
+}
+
+@INPROCEEDINGS{KootiG2017www,
+  author =       {Farshad Kooti and Mihajlo Grbovic and Luca Maria Aiello and Nemanja Djuric and Vladan Radosavljevic and Kristina Lerman},
+  title =        {Analyzing the Ride-sharing Economy},
+  booktitle =    {Proceedings of the 26th International World Wide Web Conference (Companion WWW2017)},
+  year =         {2017},
+  pages =        {},
+  publisher =    {},
+  abstract =     {Uber is a popular ride-sharing application that matches people who need a ride with others who are willing to provide it using their personal vehicles. Uber’s success has fueled the growth of the sharing economy, where consumers and providers exchange services in a peer-to-peer fashion. Despite its growing popularity, few largescale  studies examined Uber specifically, or the factors affecting user participation in the sharing economy in general. We address this gap through a large-scale study of the Uber market that analyzes 59M rides spanning a period of 7 months. These data were extracted from email receipts sent by Uber. Our data set allows us to examine the role of demographics, including age, gender, and race, on participation in the ride-sharing economy. The data is also fine-grained enough to evaluate the impact of dynamic pricing (i.e., surge pricing) and income on both rider and driver behavior. We find that the surge pricing does not bias Uber use towards higher income riders. Moreover, we show that more homophilous matches, e.g., riders to drivers of a similar age, can result in a higher driver ratings. Finally, we focus on factors that affect retention and use information from early rides to accurately predict which riders or drivers will become active Uber users.},
+  keywords =     {social-dynamics},
+}
+
+
+@INPROCEEDINGS{KootiA2017www,
+  author =       {Farshad Kooti and Karthik Subbian and Winter Mason and Lada Adamic and Kristina Lerman},
+  title =        {Understanding Short-term Changes in Online Activity Sessions},
+  booktitle =    {Proceedings of the 26th International World Wide Web Conference (Companion WWW2017)},
+  year =         {2017},
+  pages =        {},
+  publisher =    {},
+  abstract =     {Online activity is characterized by regularities such as diurnal and weekly patterns, reflecting human circadian rhythms and work and leisure schedules. Using data from the online social networking site Facebook, we uncover temporal patterns at a much smaller time scale: within individual sessions. Longer sessions have different characteristics than shorter ones, and this distinction is already visible in the first minute of a person’s session activity. This allows us to predict the ultimate length of his or her session and how much content the person will see. The length of the session and other factors are in turn predictive of when the individual will return. Within a session, the amount of time a person spends on different kinds of content depends on both the person’s demographic attributes, such as age and the number of Facebook friends, and the length of the time elapsed since the start of the session. We also find that liking and commenting is very non-uniformly distributed between sessions. Predictions of session duration and activity can potentially be leveraged to more efficiently cache content, especially to mobile devices in places with poor communications infrastructure, in order to improve user online experience.},
+  keywords =     {social-dynamics, cognitive-depletion},
+}
+
+
+@INPROCEEDINGS{Kooti2016socinfo,
+  author =       {Farshad Kooti and Esteban Moro and Kristina Lerman},
+  title =        {Twitter Session Analytics: Profiling Users’ Short-term Behavioral Changes},
+  booktitle =    {Proceedings of the 8th International Conference (SocInfo2016)},
+  year =         {2016},
+  editor =       {E Spiro and YY Ahn},
+  pages =        {71--86},
+  publisher =    {Springer},
+  keywords =     {social-dynamics, cognitive-depletion},
+  abstract={Human behavior shows strong daily, weekly, and monthly patterns. In this work, we demonstrate online behavioral changes that occur on a much smaller time scale: minutes, rather than days or weeks. Specifically, we study how people distribute their effort over different tasks during periods of activity on the Twitter social platform. We demonstrate that later in a session on Twitter, people prefer to perform simpler tasks, such as replying and retweeting others’ posts, rather than composing original messages, and they also tend to post shorter messages. We measure the strength of this effect empirically and statistically using mixed-effects models, and find that the first post of a session is up to 25\% more likely to be a composed message, and 10- 20\% less likely to be a reply or retweet. Qualitatively, our results hold for different populations of Twitter users segmented by how active and well-connected they are. Although our work does not resolve the mechanisms responsible for these behavioral changes, our results offer insights for improving user experience and engagement on online social platforms.}
+}
+
+
+@article{Lerman2016futureinternet,
+    abstract = {The many decisions that people make about what to pay attention to online shape the spread of information in online social networks. Due to the constraints of available time and cognitive resources, the ease of discovery strongly impacts how people allocate their attention to social media content. As a consequence, the position of information in an individual's social feed, as well as explicit social signals about its popularity, determine whether it will be seen, and the likelihood that it will be shared with followers. Accounting for these cognitive limits simplifies mechanics of information diffusion in online social networks and explains puzzling empirical observations: (i) information generally fails to spread in social media and (ii) highly connected people are less likely to re-share information. Studies of information diffusion on different social media platforms reviewed here suggest that the interplay between human cognitive limits and network structure differentiates the spread of information from other social contagions, such as the spread of a virus through a population.},
+    author = {Lerman, Kristina},
+    doi = {10.3390/fi8020021},
+    journal = {Future Internet},
+    keywords = {cognitive-limits, social-networks},
+    month = may,
+    number = {2},
+    pages = {21+},
+    title = {Information Is Not a Virus, and Other Consequences of Human Cognitive Limits},
+    url = {http://dx.doi.org/10.3390/fi8020021},
+    volume = {8},
+    year = {2016}
+}
+
+@article{Singer2016plosone,
+    abstract = {This article presents evidence of performance deterioration in online user sessions quantified by studying a massive dataset containing over 55 million comments posted on Reddit in April 2015. After segmenting the sessions (i.e., periods of activity without a prolonged break) depending on their intensity (i.e., how many posts users produced during sessions), we observe a general decrease in the quality of comments produced by users over the course of sessions. We propose mixed-effects models that capture the impact of session intensity on comments, including their length, quality, and the responses they generate from the community. Our findings suggest performance deterioration: Sessions of increasing intensity are associated with the production of shorter, progressively less complex comments, which receive declining quality scores (as rated by other users), and are less and less engaging (i.e., they attract fewer responses). Our contribution evokes a connection between cognitive and attention dynamics and the usage of online social peer production platforms, specifically the effects of deterioration of user performance.},
+    author = {Singer, Philipp and Ferrara, Emilio and Kooti, Farshad and Strohmaier, Markus and Lerman, Kristina},
+    doi = {10.1371/journal.pone.0161636},
+    journal = {PLoS ONE},
+    keywords = {cognitive-depletion, lerman, reddit},
+    number = {8},
+    pages = {e0161636+},
+    publisher = {Public Library of Science},
+    title = {Evidence of Online Performance Deterioration in User Sessions on Reddit},
+    url = {http://dx.doi.org/10.1371/journal.pone.0161636},
+    volume = {11},
+    year = {2016}
+}
+
+
+@ARTICLE{Hogg2015hcomp,
+  author =       {Tad Hogg and Kristina Lerman},
+  title =        {Disentangling the Effects of Social Signals},
+  journal =      {Human Computation Journal},
+  year =         {2015},
+  volume =       {2},
+  number =       {2},
+  pages =        {189--208},
+  abstract =     {Peer recommendation is a crowdsourcing task that leverages the opinions of
+  many to identify interesting content online, such as news, images, or videos. Peer
+  recommendation applications often use social signals, e.g., the number of prior recommendations, to guide people to the more interesting content. How people react to social signals, in combination with content quality and its presentation order, determines the outcomes of peer recommendation, i.e., item popularity. Using Amazon Mechanical Turk, we experimentally measure the effects of social  signals in peer recommendation. Specifically, after controlling for variation due to item content  and its position, we find that social  signals affect item popularity about half as much as position and content do. These effects are somewhat correlated, so social  signals exacerbate the ``rich get richer'' phenomenon, which results in a wider variance of popularity. Further, social signals change individual preferences, creating a ``herding'' effect that biases people's judgments about the content. Despite this, we find that social  signals improve the efficiency of peer recommendation by reducing the effort devoted to evaluating content while maintaining recommendation quality.
+},
+ url={http://arxiv.org/abs/1410.6744}
+}
+
+
+
+@INPROCEEDINGS{Kooti16wsdm,
+  author =       {Farshad Kooti and Kristina Lerman and Luca Maria Aiello and Mihajlo Grbovic and Nemanja Djuric and Vladan Radosavljevic},
+  title =        {Portrait of an Online Shopper: Understanding and Predicting Consumer Behavior},
+  booktitle =    {The 9th ACM International Conference on Web Search and Data Mining},
+  year =         {2016},
+  keywords =     {social-dynamics},
+  abstract = {Consumer spending accounts for a large fraction of US economic
+activity. Increasingly, consumer activity is moving online, where
+digital traces of shopping and purchases provide valuable data about
+consumer behavior. We analyze these data extracted from emails
+and combine them with demographic information to characterize,
+model, and predict consumer behavior. Breaking purchasing down
+by age and gender, we find that the amount of money spent on online
+purchases grows sharply with age, peaking in late 30s. Men
+are more frequent online purchasers and spend more money compared
+to women. Linking online shopping to income, we find that
+shoppers from more affluent areas purchase somewhat more expensive
+items and buy them more frequently, resulting in significantly
+more money spent on online purchases. We also look at dynamics
+of purchasing behavior. Similar to other online activities, we
+observe daily and weekly cycles in purchasing behavior. More interestingly,
+we observe temporal patterns in individual purchasing
+behavior suggesting shoppers have finite budgets: the more expensive
+an item, the longer the shopper waits since the last purchase
+to buy it. We also observe that shoppers who email each other
+purchase more similar items than socially unconnected shoppers,
+and this effect is particularly evident among women. Finally, we
+build a model to predict when shoppers will make a purchase and
+how much they will spend on it. We find that temporal features
+improve prediction accuracy over competitive baselines. A better
+understanding of consumer behavior can help improve marketing
+efforts and make online shopping more pleasant and efficient.},
+url={http://arxiv.org/abs/1512.04912},
+}
+
+
+@INPROCEEDINGS{Kooti15www,
+  AUTHOR =       {Farshad Kooti and Luca Maria Aiello and Mihajlo Grbovic and Kristina Lerman and Amin Mantrach},
+  TITLE =        {Evolution of Conversations in the Age of Email Overload},
+  BOOKTITLE =    {Proceedings of 24th International World Wide Web Conferenced (WWW)},
+  YEAR =         {2015},
+  month =        {May},
+  url = {http://arxiv.org/abs/1504.00704},
+  keywords =     {social-dynamics},
+  abstract={Email is a ubiquitous communications tool in the workplace and plays an important role in social interactions. Previous studies of email were largely based on surveys and limited to relatively small populations of email users within organizations. In this paper, we report results of a large-scale study of more than 2 million users exchanging 16 billion emails over several months. We quantitatively characterize the replying behavior in conversations within pairs of users. In particular, we study the time it takes the user to reply to a received message and the length of the reply sent. We consider a variety of factors that affect the reply time and length, such as the stage of the conversation, user demographics, and use of portable devices. In addition, we study how increasing load affects emailing behavior. We find that as users receive more email messages in a day, they reply to a smaller fraction of them, using shorter replies. However, their responsiveness remains intact, and they may even reply to emails faster. Finally, we predict the time to reply, length of reply, and whether the reply ends a conversation. We demonstrate considerable improvement over the baseline in all three prediction tasks, showing the significant role that the factors that we uncover play, in determining replying behavior. We rank these factors based on their predictive power. Our findings have important implications for understanding human behavior and designing better email management applications for tasks like ranking unread emails.},
+}
+
+@ARTICLE{Ghosh15gmas,
+  AUTHOR =       {Rumi Ghosh and Kristina Lerman},
+  TITLE =        {The Impact of Network Flows on Community Formation in Models of Opinion Dynamics},
+  JOURNAL =      {Journal of Mathematical Sociology},
+  YEAR =         {2015},
+  volume =       {39},
+  number =       {},
+  pages =        {109--124},
+  month =        {},
+  note =         {},
+  keywords =     {social-networks},
+  url={http://www.tandfonline.com/doi/pdf/10.1080/0022250X.2014.905776},
+  abstract =     {We study dynamics of opinion formation in a network of coupled agents. As the network
+evolves to a steady state, opinions of agents within the same community converge faster than
+those of other agents. This framework allows us to study how network topology and
+network flow, which mediates the transfer of opinions between agents, both affect the
+formation of communities. In traditional models of opinion dynamics, agents are coupled
+via conservative flows, which result in one-to-one opinion transfer. However, social
+interactions are often nonconservative, resulting in one-to-many transfer of opinions.
+We study opinion formation in networks using one-to-one and one-to-many interactions
+and show that they lead to different community structure within the same network.}
+  }
+  
+@ARTICLE{Yan2017,
+  author =       {Xiaoran Yan and Brian M. Sadler and Robert J. Drost and Paul L. Yu and Kristina Lerman},
+  title =        {Graph Filters and the Z-Laplacian},
+  journal =      {IEEE Journal of Selected Topics in Signal Processing},
+  year =         {2017},
+  volume =       {11},
+  number =       {6},
+  pages =        {774--784},
+  abstract =     {In network science, the interplay between dynamical processes and the underlying topologies of
+  complex systems has led to a diverse family of models with different interpretations. In graph signal processing,
+  this is manifested in the form of different graph shifts and their induced algebraic systems. In this paper, we
+  propose the unifying Z-Laplacian framework, whose instances can act as graph shift operators. As a generalization of
+  the traditional graph Laplacian, the Z-Laplacian spans the space of all possible Z -matrices, i.e., real square
+  matrices with nonpositive off-diagonal entries. We show that the Z -Laplacian can model general continuous-time
+  dynamical processes, including information flows and epidemic spreading on a given graph. It is also closely related
+  to general nonnegative graph filters in the discrete time domain. We showcase its flexibility by considering two
+  applications. First, we consider a wireless communications networking problem modeled with a graph, where the
+  framework can be applied to model the effects of the underlying communications protocol and traffic. Second, we
+  examine a structural brain network from the perspective of low- to high-frequency connectivity.},
+}
+
+@article{Wu2017neighbor,
+  title={Neighbor-Neighbor Correlations Explain Measurement Bias in Networks},
+  author={Wu, Xin-Zeng and Percus, Allon G and Lerman, Kristina},
+  journal={Scientific Reports},
+  volume={7},
+  number =       {5576},
+  month =        {jul},
+  year={2017},
+  publisher={Nature Publishing Group}
+  doi =          {doi:10.1038/s41598-017-06042-0},
+}
+
+
+@article{Smith2016tkdd,
+ author = {Smith, Laura M. and Zhu, Linhong and Lerman, Kristina and Percus, Allon G.},
+ title = {Partitioning Networks with Node Attributes by Compressing Information Flow},
+ journal = {ACM Trans. Knowl. Discov. Data},
+     abstract = {Real-world networks are often organized as modules or communities of similar
+nodes that serve as functional units. These networks are also rich in content,
+with nodes having distinguishing features or attributes. In order to discover a
+network's modular structure, it is necessary to take into account not only its
+links but also node attributes. We describe an information-theoretic method
+that identifies modules by compressing descriptions of information flow on a
+network. Our formulation introduces node content into the description of
+information flow, which we then minimize to discover groups of nodes with
+similar attributes that also tend to trap the flow of information. The method
+has several advantages: it is conceptually simple and does not require ad-hoc
+parameters to specify the number of modules or to control the relative
+contribution of links and node attributes to network structure. We apply the
+proposed method to partition real-world networks with known community
+structure. We demonstrate that adding node attributes helps recover the
+underlying community structure in content-rich networks more effectively than
+using links alone. In addition, we show that our method is faster and more
+accurate than alternative state-of-the-art algorithms.},
+ issue_date = {November 2016},
+ volume = {11},
+ number = {2},
+ month = nov,
+ year = {2016},
+ issn = {1556-4681},
+ pages = {15:1--15:26},
+ articleno = {15},
+ numpages = {26},
+    url = {http://arxiv.org/abs/1405.4332},
+ doi = {10.1145/2968451},
+ acmid = {2968451},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+     keywords = {social-networks},
+}
+
+
+@ARTICLE{Merkurjev2016ip,
+  author =       {Ekaterina Merkurjev and Andrea Bertozzi and Xiaoran Yan and Kristina Lerman},
+  title =        {Modified Cheeger and Ratio Cut Methods Using the Ginzburg-Landau Functional for Classification of
+  High-Dimensional Data},
+  journal =      {to appear in Inverse Problems},
+  year =         {2016},
+  volume =       {},
+  number =       {},
+  pages =        {},
+  abstract={Recent advances in clustering have included continuous relaxations of the Cheeger cut problem and those
+  which address its linear approximation using the graph Laplacian. In this paper, we show how to use the graph
+  Laplacian to solve the fully nonlinear Cheeger cut problem, as well as the ratio cut optimization task. Both problems
+  are connected to total variation minimization, and the related Ginzburg-Landau functional is used in the derivation
+  of the methods. The graph framework discussed in this paper is undirected. The resulting algorithms are efficient
+  ways to cluster the data into two classes, and they can be easily extended to the case of multiple classes, or used
+  on a multiclass data set via recursive bipartitioning. In addition to showing results on benchmark data sets, we also
+  show an application of the algorithm to hyperspectral video data.},
+  keywords =     {social-networks},
+}
+
+
+@article{Yan2016peerj,
+    abstract = {We study the interplay between a dynamical process and the structure of the network on which it unfolds
+    using the parameterized Laplacian framework. This framework allows for defining and characterizing an ensemble of
+    dynamical processes on a network beyond what the traditional Laplacian is capable of modeling. This, in turn,
+    allows for studying the impact of the interaction between dynamics and network topology on the quality-measure of
+    network clusters and centrality, in order to effectively identify important vertices and communities in the
+    network. Specifically, for each dynamical process in this framework, we define a centrality measure that captures a
+    vertex's participation in the dynamical process on a given network and also define a function that measures the
+    quality of every subset of vertices as a potential cluster (or community) with respect to this process. We show
+    that the subset-quality function generalizes the traditional conductance measure for graph partitioning. We
+    partially justify our choice of the quality function by showing that the classic Cheeger's inequality, which
+    relates the conductance of the best cluster in a network with a spectral quantity of its Laplacian matrix, can be
+    extended to the parameterized Laplacian. The parameterized Laplacian framework brings under the same umbrella a
+    surprising variety of dynamical processes and allows us to systematically compare the different perspectives they
+    create on network structure.},
+    author = {Yan, Xiaoran and Teng, Shanghua and Ghosh, Rumi and Lerman, Kristina},
+    doi = {https://doi.org/10.7717/peerj-cs.57},
+    journal = {PeerJ Computer Science},
+    pages = {e57+},
+    title = {Capturing the interplay of dynamics and networks through parameterizations of Laplacian operators.},
+    url = {https://peerj.com/articles/cs-57/},
+    volume = {2},
+    keywords={social-networks, social-dynamics},
+    year = {2016}
+}
+
+
+@article{Lerman2016majority,
+    author = {Kristina Lerman and Xiaoran Yan and Xin-Zeng Wu},
+    journal = {PLoS ONE},
+    publisher = {Public Library of Science},
+    title = {The "Majority Illusion" in Social Networks},
+    year = {2016},
+    month = {02},
+    volume = {11},
+      keywords =     {social-networks},
+    url = {http://dx.doi.org/10.1371%2Fjournal.pone.0147617},
+    pages = {1-13},
+    abstract = {Individual's decisions, from what product to buy to whether to engage in risky behavior, often depend
+    on the choices, behaviors, or states of other people. People, however, rarely have global knowledge of the states
+    of others, but must estimate them from the local observations of their social contacts. Network structure can
+    significantly distort individual?s local observations. Under some conditions, a state that is globally rare in a
+    network may be dramatically over-represented in the local neighborhoods of many individuals. This effect, which we
+    call the ?majority illusion,? leads individuals to systematically overestimate the prevalence of that state, which
+    may accelerate the spread of social contagions. We develop a statistical model that quantifies this effect and
+    validate it with measurements in synthetic and real-world networks. We show that the illusion is exacerbated in
+    networks with a heterogeneous degree distribution and disassortative structure.</p>},
+    number = {2},
+}
+
+
+
+@INPROCEEDINGS{Kang15icwsm,
+  AUTHOR =       {Jeonhyung Kang and Kristina Lerman},
+  TITLE =        {User Effort and Network Structure Mediate Access to Information in Networks},
+  BOOKTITLE =    {Proceedings of the 9th  International AAAI Conference on Weblogs and Social Media (ICWSM)},
+  YEAR =         {2015},
+  month =        {},
+  url = {http://arxiv.org/abs/1504.01760},
+  keywords =     {social-networks},
+  abstract = {Individuals' access to information in a social network depends on its distributed and where in the
+  network individuals position themselves. However, individuals have limited capacity to manage their social
+  connections and process information. In this work, we study how this limited capacity and network structure interact
+  to affect the diversity of information social media users receive. Previous studies of the role of networks in
+  information access were limited in their ability to measure the diversity of information. We address this problem by
+  learning the topics of interest to social media users by observing messages they share online with their followers.
+  We present a probabilistic model that incorporates human cognitive constraints in a generative model of information
+  sharing. We then use the topics learned by the model to measure the diversity of information users receive from their
+  social media contacts. We confirm that users in structurally diverse network positions, which bridge otherwise
+  disconnected regions of the follower graph, are exposed to more diverse information. In addition, we identify user
+  effort as an important variable that mediates access to diverse information in social media. Users who invest more
+  effort into their activity on the site not only place themselves in more structurally diverse positions within the
+  network than the less engaged users, but they also receive more diverse information when located in similar network
+  positions. These findings indicate that the relationship between network structure and access to information in
+  networks is more nuanced than previously thought.},
+}
+
+@article{ferrara2016rise,
+  title={The rise of social bots},
+  author={Ferrara, Emilio and Varol, Onur and Davis, Clayton and Menczer, Filippo and Flammini, Alessandro},
+  journal={Communications of the ACM},
+  volume={59},
+  number={7},
+  pages={96--104},
+  year={2016},
+  publisher={ACM}
+}
+
+@article{huesch2016using,
+  title={Using social media, online social networks, and internet search as platforms for public health interventions: a pilot study},
+  author={Huesch, Marco D and Galstyan, Aram and Ong, Michael K and Doctor, Jason N},
+  journal={Health services research},
+  volume={51},
+  number={S2},
+  pages={1273--1290},
+  year={2016},
+  publisher={Wiley Online Library}
+}
+
+@article{agreste2016network,
+  title={Network structure and resilience of mafia syndicates},
+  author={Agreste, Santa and Catanese, Salvatore and De Meo, Pasquale and Ferrara, Emilio and Fiumara, Giacomo},
+  journal={Information Sciences},
+  volume={351},
+  pages={30--47},
+  year={2016},
+  publisher={Elsevier}
+}
+
+@inproceedings{davis2016botornot,
+  title={BotOrNot: A system to evaluate social bots},
+  author={Davis, Clayton Allen and Varol, Onur and Ferrara, Emilio and Flammini, Alessandro and Menczer, Filippo},
+  booktitle={Proceedings of the 25th International Conference Companion on World Wide Web},
+  pages={273--274},
+  year={2016},
+  organization={International World Wide Web Conferences Steering Committee}
+}
+
+@article{singer2016evidence,
+  title={Evidence of Online Performance Deterioration in User Sessions on Reddit},
+  author={Singer, Philipp and Ferrara, Emilio and Kooti, Farshad and Strohmaier, Markus and Lerman, Kristina},
+  journal={PloS one},
+  volume={11},
+  number={8},
+  pages={e0161636},
+  year={2016},
+  publisher={Public Library of Science}
+}
+
+@article{allem2016importance,
+  title={The importance of debiasing social media data to better understand e-cigarette-related attitudes and behaviors},
+  author={Allem, Jon-Patrick and Ferrara, Emilio},
+  journal={Journal of Medical Internet Research},
+  volume={18},
+  number={8},
+  year={2016},
+  publisher={JMIR Publications Inc.}
+}
+
+@inproceedings{yang2016social,
+  title={Social politics: Agenda setting and political communication on social media},
+  author={Yang, Xinxin and Chen, Bo-Chiuan and Maity, Mrinmoy and Ferrara, Emilio},
+  booktitle={International Conference on Social Informatics},
+  pages={330--344},
+  year={2016},
+  organization={Springer}
+}
+
+
+@article{bessi2016social,
+  title={Social bots distort the 2016 US Presidential election online discussion},
+  author={Bessi, Alessandro and Ferrara, Emilio},
+  journal={First Monday},
+  volume={21},
+  number={11},
+  year={2016}
+}
+
+@inproceedings{ferrara2016detection,
+  title={Detection of promoted social media campaigns},
+  author={Ferrara, Emilio and Varol, Onur and Menczer, Filippo and Flammini, Alessandro},
+  booktitle={Tenth International AAAI Conference on Web and Social Media},
+  year={2016}
+}
+
+
+@article{ferrara2015measuring,
+  title={Measuring emotional contagion in social media},
+  author={Ferrara, Emilio and Yang, Zeyao},
+  journal={PloS one},
+  volume={10},
+  number={11},
+  pages={e0142390},
+  year={2015},
+  publisher={Public Library of Science}
+}
+
+@article{ferrara2015quantifying,
+  title={Quantifying the effect of sentiment on information diffusion in social media},
+  author={Ferrara, Emilio and Yang, Zeyao},
+  journal={PeerJ Computer Science},
+  volume={1},
+  pages={e26},
+  year={2015},
+  publisher={PeerJ Inc.}
+}
+
+@article{zhu2016scalable,
+  title={Scalable Temporal Latent Space Inference for Link Prediction in Dynamic Social Networks},
+  author={Zhu, Linhong and Guo, Dong and Yin, Junming and Ver Steeg, Greg and Galstyan, Aram},
+  journal={IEEE Transactions on Knowledge and Data Engineering},
+  volume={28},
+  number={10},
+  pages={2765--2777},
+  year={2016},
+  publisher={IEEE}
+}
+
+@article{subrahmanian2016darpa,
+  title={The DARPA Twitter bot challenge},
+  author={Subrahmanian, VS and Azaria, Amos and Durst, Skylar and Kagan, Vadim and Galstyan, Aram and Lerman, Kristina and Zhu, Linhong and Ferrara, Emilio and Flammini, Alessandro and Menczer, Filippo},
+  journal={Computer},
+  volume={49},
+  number={6},
+  pages={38--46},
+  year={2016},
+  publisher={IEEE}
+}
+
+@inproceedings{cho2016latent,
+  title={Latent space model for multi-modal social data},
+  author={Cho, Yoon-Sik and Ver Steeg, Greg and Ferrara, Emilio and Galstyan, Aram},
+  booktitle={Proceedings of the 25th International Conference on World Wide Web},
+  pages={447--458},
+  year={2016},
+  organization={International World Wide Web Conferences Steering Committee}
+}
