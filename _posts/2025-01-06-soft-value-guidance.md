@@ -50,6 +50,7 @@ toc:
 ---
 
 ## Setting & Notation
+
  Assume we are given a pretrained model  $$ p^{\text{ref}} $$, which we will eventually seek to condition or modulate to achieve some target properties or distribution at the endpoint.   The reader should feel free to skip ahead to concrete examples in [Target Distributions](#target-distributions) and parse the notation within this context.
  
 
@@ -240,7 +241,7 @@ V^{\mathbf{y}}_{0}(\mathbf{x}_{0}) &= \max \limits_{q(\mathbf{x}_{1:T}|\mathbf{x
 &= \log \mathcal{Z}^{\mathbf{y}}_{0}(\mathbf{x}_{0})  \nonumber 
 \end{align} $$
 
-This identity can be see by solving for the the optimal $$q$$, subject to a normalization constraint
+This identity can seen by solving for the the optimal $$q$$, subject to a normalization constraint.   Taking the variation with respect to $$q$$,
 
 $$\begin{align*}
  \frac{\delta}{\delta q}[\cdot] = \log p(\mathbf{y}\vert \mathbf{x}_{T}) - \log q(\mathbf{x}_{1:T}|\mathbf{x}_{0}) + \log p^{\text{ref}}(\mathbf{x}_{1:T}|\mathbf{x}_{0}) - 1 - \lambda(\mathbf{x}_0) = 0 \\
