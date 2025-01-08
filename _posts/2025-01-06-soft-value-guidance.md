@@ -135,7 +135,12 @@ $$ \begin{align} p^*(\mathbf{x}_{0:T} \vert  \mathbf{y})= p^*(\mathbf{x}_{0} \ve
 #### Constraints
 For the language modeling setting, constraints may filter responses which correspond to correct answers to reasoning questions <d-cite key="feng2024step"></d-cite>, syntactically-valid outputs, or responses for which a scalar function meets an acceptability or rare-event threshold $$ \mathbb{I}[ f(\mathbf{x}_T)\leq c] $$.
 
-For diffusion modeling, constraining the endpoint sample to fall within a certain set $$ \mathbb{I}[ \mathbf{x}_T \in \mathcal{B}] $$ corresponds to the traditional formulation of Doob's $h$-transform, which has been used for generative modeling on constrained domains  <d-cite key="liu2023learning"></d-cite> or with aligned data <d-cite key="somnath2023aligned,du2024doob"></d-cite> arising in biomolecular or chemical problems.   In the case where $$ p^{\text{ref}} $$ is a diffusion with linear drift, the conditioned process ending at a particular point $$ \mathbb{I}[ \mathbf{x}_T = \mathbf{x}] $$  is available as a closed form linear interpolation.   This observation underlies efficient optimization techniques for `bridge matching' methods <d-cite key="shi2024diffusion,peluchetti2023diffusion"></d-cite> which extend rectified flow matching <d-cite key="liu2023flow,lipman2023flow"></d-cite> to stochastic processes and Schrödinger Bridge problems for generative modeling or image translation.  <d-footnote> The solution to the Schrödinger Bridge (SB) problem can be viewed as a controlled diffusion in the form of \eqref{eq:csde} and \eqref{eq:soft_value_drift}, where the control drift $u_t$ becomes a posterior expectation of the reference transition probability  <d-cite key="shi2024diffusion"></d-cite> $$ u_t(\mathbf{x}_t)= \sigma_t^2 \nabla_{\mathbf{x}_t} \log p^*(\mathbf{y}|\mathbf{x}_t) = \sigma_t^2 \mathbb{E}_{p^*(\mathbf{x}_T|\mathbf{x}_t,\mathbf{y}=1)}[ \nabla_{\mathbf{x}_t} \log p^{\text{ref}}(\mathbf{x}_T|\mathbf{x}_t)]$$   While this fits into the General Unnormalized Target Density setting above, we do not emphasize this example since the SB problem usually assumes access to samples only. See <d-cite key="pooladian2024plug"></d-cite> for discussion, where the Sinkhorn algorithm is used to obtain a likelihood ratio from samples and construct the control drift $ u_t $. </d-footnote>
+For diffusion modeling, constraining the endpoint sample to fall within a certain set $$ \mathbb{I}[ \mathbf{x}_T \in \mathcal{B}] $$ corresponds to the traditional formulation of Doob's $h$-transform, which has been used for generative modeling on constrained domains  <d-cite key="liu2023learning"></d-cite> or with aligned data <d-cite key="somnath2023aligned,du2024doob"></d-cite> arising in biomolecular or chemical problems.   In the case where $$ p^{\text{ref}} $$ is a diffusion with linear drift, the conditioned process ending at a particular point $$ \mathbb{I}[ \mathbf{x}_T = \mathbf{x}] $$  is available as a closed form linear interpolation.   This observation underlies efficient optimization techniques for `bridge matching' methods <d-cite key="shi2024diffusion,peluchetti2023diffusion"></d-cite> which extend rectified flow matching <d-cite key="liu2023flow,lipman2023flow"></d-cite> to stochastic processes and Schrödinger Bridge problems for generative modeling or image translation.  <d-footnote> The solution to the Schrödinger Bridge (SB) problem can be viewed as a controlled diffusion in the form of \eqref{eq:csde} and \eqref{eq:soft_value_drift}, where the control drift $u_t$ becomes a posterior expectation of the reference transition probability  <d-cite key="shi2024diffusion"></d-cite> 
+$$ \begin{align*} 
+u_t(\mathbf{x}_t)= \sigma_t^2 \nabla_{\mathbf{x}_t} \log p^*(\mathbf{y}|\mathbf{x}_t) &= \sigma_t^2  \int d\mathbf{x}_T \frac{p^{\text{ref}}(\mathbf{x}_T|\mathbf{x}_t) p(\mathbf{y}|\mathbf{x}_T)}{\int p^{\text{ref}}(\mathbf{x}_T|\mathbf{x}_t) p(\mathbf{y}|\mathbf{x}_T) d\mathbf{x}_T} \nabla_{\mathbf{x}_t} \log p^{\text{ref}}(\mathbf{x}_T|\mathbf{x}_t)  \\
+&= \sigma_t^2 \mathbb{E}_{p^*(\mathbf{x}_T|\mathbf{x}_t,\mathbf{y}=1)}[ \nabla_{\mathbf{x}_t} \log p^{\text{ref}}(\mathbf{x}_T|\mathbf{x}_t)] 
+\end{align*}$$   
+While this fits into the General Unnormalized Target Density setting above, we do not emphasize this example since the SB problem usually assumes access to samples only. See <d-cite key="pooladian2024plug"></d-cite> for discussion, where the Sinkhorn algorithm is used to obtain a likelihood ratio ($\propto p(\mathbf{y}|\mathbf{x}_T)$) from samples and construct the control drift $ u_t $. </d-footnote>
 
 #### Classification or Observation Random Variables
 
@@ -243,18 +248,21 @@ $$\begin{align}
 V^{\mathbf{y}}_{0}(\mathbf{x}_{0}) &= \max \limits_{q(\mathbf{x}_{1:T}|\mathbf{x}_{0})} ~ \mathbb{E}_{q(\mathbf{x}_{1:T}|\mathbf{x}_{0})}\big[ \log p(\mathbf{y}\vert \mathbf{x}_{T}) \big] - D_{KL}\big[q(\mathbf{x}_{1:T}|\mathbf{x}_{0}): p^{\text{ref}}(\mathbf{x}_{1:T}|\mathbf{x}_{0})\big] \label{eq:elbo} \\
 &= \log \mathcal{Z}^{\mathbf{y}}_{0}(\mathbf{x}_{0})  \nonumber 
 \end{align} $$
-
-This identity can seen by solving for the the optimal $$q$$, subject to a normalization constraint.   Taking the variation with respect to $$q$$,
-
+The posterior $$ q(\mathbf{x}_{1:T}|\mathbf{x}_{0})= p^*(\mathbf{x}_{1:T} | \mathbf{x}_{0}, \mathbf{y}) = \frac{1}{\mathcal{Z}^{\mathbf{y}}_{0}(\mathbf{x}_{0})}  p^{\text{ref}}(\mathbf{x}_{1:T}|\mathbf{x}_{0}) p(\mathbf{y}|\mathbf{x}_T) $$ achieves the maximum.<d-footnote> This can seen by solving for the the optimal $q$, subject to a normalization constraint.   Taking the variation with respect to $q$,
 $$\begin{align*}
  \frac{\delta}{\delta q}[\cdot] = \log p(\mathbf{y}\vert \mathbf{x}_{T}) - \log q(\mathbf{x}_{1:T}|\mathbf{x}_{0}) + \log p^{\text{ref}}(\mathbf{x}_{1:T}|\mathbf{x}_{0}) - 1 - \lambda(\mathbf{x}_0) = 0 \\
  \implies q^*(\mathbf{x}_{1:T} | \mathbf{x}_{0}) = \frac{1}{\mathcal{Z}^{\mathbf{y}}_{0}(\mathbf{x}_{0})}p^{\text{ref}}(\mathbf{x}_{1:T}|\mathbf{x}_{0}) p(\mathbf{y}\vert \mathbf{x}_{T})
 \end{align*}$$
+</d-footnote>  Plugging back into \eqref{eq:elbo} and cancelling terms, we see that the soft value function corresponds to the log normalization constant  $$ V^{\mathbf{y}}_{0}(\mathbf{x}_{0}) = \log \mathcal{Z}^{\mathbf{y}}_{0}(\mathbf{x}_{0}) $$.
 
+
+
+<!--- 
  Thus, $$ q(\mathbf{x}_{1:T}|\mathbf{x}_{0})= p^*(\mathbf{x}_{1:T} | \mathbf{x}_{0}, \mathbf{y})$$ achieves the maximum.
  Plugging back into \eqref{eq:elbo}, we see that the soft value function simplifies to the log normalization constant  $$ V^{\mathbf{y}}_{0}(\mathbf{x}_{0}) = \log \mathcal{Z}^{\mathbf{y}}_{0}(\mathbf{x}_{0}) $$ after cancellations.
+ --->
 
-The optimal *soft value function* also translates terminal target information to intermediate steps, which facilitates sampling the exact posterior marginals along the entire trajectory.   In particular, consider the optimization \eqref{eq:elbo} starting from a given partial sequence or intermediate state $$ \mathbf{x}_t $$,
+The optimal soft value function can be understood as translating terminal target information to intermediate steps, which facilitates sampling the exact posterior marginals along the entire trajectory.   In particular, consider the optimization \eqref{eq:elbo} starting from a given partial sequence or intermediate state $$ \mathbf{x}_t $$,
 
  $$
 \begin{align}
@@ -276,7 +284,7 @@ V^{\mathbf{y}}_{t}(\mathbf{x}_t)  = \log p^*(\mathbf{y} \vert \mathbf{x}_t)
 $$--->
 
 #### One-Step Optimal Policy
- Similarly, we can write the optimal one-step sampling distributions in terms of soft values, 
+ Similarly, we can write the one-step-ahead posterior transitions using soft values,
 
  $$\begin{align}
   p^*(\mathbf{x}_{t} \vert \mathbf{x}_{t-1}, \mathbf{y}) &=  p^{\text{ref}}(\mathbf{x}_{t}|\mathbf{x}_{t-1}) \frac{p^*(\mathbf{y} \vert \mathbf{x}_t)}{p^*(\mathbf{y} \vert \mathbf{x}_{t-1})} \nonumber \\
@@ -284,11 +292,11 @@ $$--->
   \end{align}
 $$
 
-where $$ V^{\mathbf{y}}_{t-1}(\mathbf{x}_{t-1}) = \log \mathcal{Z}^{\mathbf{y}}_{t-1} (\mathbf{x}_{t-1}) $$ again serves as the log normalization constant.
+where $$ V^{\mathbf{y}}_{t-1}(\mathbf{x}_{t-1}) = \log \mathcal{Z}^{\mathbf{y}}_{t-1} (\mathbf{x}_{t-1}) $$ again is the log normalization constant.
 
 
 #### Intermediate Marginal Distributions
-Finally, composing the optimal one-step policies, we can consider how the  target marginal distribution of $$\mathbf{x}_t$$ evolves over time.  In terms of the value function, we have
+Finally, composing the optimal one-step policies above, we can consider how the  target marginal distribution of $$\mathbf{x}_t$$ evolves over time.  In terms of the soft value function, we have
  <!---write the evolution of the marginals in terms of the value function--->
 
 $$\begin{align}
