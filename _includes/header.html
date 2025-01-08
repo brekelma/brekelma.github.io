@@ -135,3 +135,39 @@
         </div>
       </nav>
     </header>
+
+<!---<head>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script> 
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML">
+window.MathJax = {
+tex: {
+inlineMath: [['$$', '$$'], ['\\(', '\\)']],
+displayMath: [['$$', '$$'], ['\\[', '\\]']],
+packages: {'[+]': ['amsmath']}
+},
+options: {
+renderActions: {
+  addLabels: [0]
+}
+}
+};
+</script> 
+</head> 
+--->
+<head>
+  <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      },
+      TeX: {
+        equationNumbers: { autoNumber: "all" }, // Automatic equation numbering
+        packages: {'[+]': ['amsmath']} // Include AMS math package
+      }
+    });
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+</head>

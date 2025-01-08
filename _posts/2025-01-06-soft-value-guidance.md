@@ -58,6 +58,7 @@ toc:
 
 For diffusion processes, let  $$ \mathbf{x}_t \in \mathbb{R}^d $$  represent the current (noisy) state, where  $$ \mathbf{x}_T $$  corresponds to clean data.  <d-footnote>We focus on continuous diffusion models here.  While many concepts introduced will be relevant to discrete diffusion guidance, this remains an active area of research.</d-footnote>
 We consider a reference stochastic differential equation with time-dependent drift  $$ b_t^{\text{ref}} $$ , which may correspond to a physical force or pretrained score-based diffusion model
+
 $$ \begin{align}
 P^{\text{ref}}:  \qquad d \mathbf{x}_t  =  b_t^{\text{ref}}({\mathbf{x}_t}) dt + \sigma_t dW_t \qquad {\mathbf{x}_{0}} \sim p_{0}^{\text{ref}} 
 \end{align}$$ 
@@ -68,16 +69,16 @@ Q^{u}:  \quad d\mathbf{x}_t = \left( b_t^{\text{ref}}(\mathbf{x}_t ) + u_t(\math
 \end{align} $$ 
 We can approximately model these continuous-time stochastic processes using discrete-time Gaussian kernels for small  $$ dt $$ .   We consider the control drift as an action  $$ a_t = u(\mathbf{x}_t, t) $$ , with stochastic environment transitions drawn from  $$ p^{\text{env}}(\mathbf{x}_{t+1} \vert a_t = u(\mathbf{x}_t,t), \mathbf{x}_t)= \mathcal{N}(\mathbf{x}_{t+1}; \mathbf{x}_t + b_t^{\text{ref}}(\mathbf{x}_t)dt + u_t(\mathbf{x}_t) dt, \sigma_{t} \mathbb{I}_d) $$  via Euler discretization.  For convenience,  we combine action selection and state transition into the policy  $$ q_{t+1}^u(\mathbf{x}_{t+1} \vert \mathbf{x}_t) = \mathcal{N}(\mathbf{x}_{t+1}; \mathbf{x}_t +  b_t^{\text{ref}}(\mathbf{x}_t)dt + u(\mathbf{x}_t,t) dt, \sigma_{t} \mathbb{I}_d) $$ .
 --->
+
 We can approximately model this continuous-time stochastic processes using discrete-time Gaussian kernels for small  $$ dt $$ .   We consider the reference drift as an action  $$ a_t = b_t^{\text{ref}}(\mathbf{x}_t, t) $$ , with stochastic environment transitions drawn from  $$ p^{\text{env}}(\mathbf{x}_{t+1} \vert a_t = b_t^{\text{ref}}(\mathbf{x}_t,t), \mathbf{x}_t)= \mathcal{N}(\mathbf{x}_{t+1}; \mathbf{x}_t + b_t^{\text{ref}}(\mathbf{x}_t)dt , \sigma_{t} \mathbb{I}_d) $$  via Euler discretization.  For convenience,  we combine action selection and state transition into the policy  $$ p^{\text{ref}}_{t+1}(\mathbf{x}_{t+1} \vert \mathbf{x}_t) = \mathcal{N}(\mathbf{x}_{t+1}; \mathbf{x}_t +  b_t^{\text{ref}}(\mathbf{x}_t)dt, \sigma_{t} \mathbb{I}_d) $$ .
 
-<!--- <div class="row mt-3">
+<!--- <div style="width: 40%; margin: auto; text-align: center;">
+    <img src="/assets/img/2025-01-06-soft-value-guidance/main_fig.jpg" class="img-fluid rounded z-depth-1" alt="Posterior Conditioning">
+</div> ---->
+<div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/2025-01-06-soft-value-guidance/main_fig.jpg" class="img-fluid rounded z-depth-1" %}
     </div>
-</div> --->
-
-<div style="width: 40%; margin: auto; text-align: center;">
-    <img src="/assets/img/2025-01-06-soft-value-guidance/main_fig.jpg" class="img-fluid rounded z-depth-1" alt="Posterior Conditioning">
 </div>
 <div class="caption">
     Posterior Conditioning in both Language and Diffusion Models.  See <a href="#soft-value-function">Soft Value Function</a> and <a href="#stochastic-optimal-control">Stochastic Optimal Control</a> sections for the role of the value function.
@@ -119,8 +120,10 @@ corresponds to performing rejection sampling of candidate  $$ \mathbf{x}_T $$  v
 --->
 
 A crucial challenge arises from the fact that conditioning information is only provided at the terminal state  $$ \mathbf{x}_T $$ , whereas generation or sampling needs to be performed sequentially and forward in time according to 
+
 $$ \begin{align} p^*(\mathbf{x}_{0:T} \vert  \mathbf{y})= p^*(\mathbf{x}_{0} \vert \mathbf{y}) \prod_{t=1}^{T} p^*(\mathbf{x}_{t} \vert \mathbf{x}_{t-1}, \mathbf{y}) \label{eq:backward}
 \end{align}$$
+
  Before describing how soft value functions and stochastic optimal control can be used to address this challenge, we discuss several concrete examples below.
 
 ### Examples 
@@ -174,6 +177,7 @@ While accepted  $$ \mathbf{x}_T $$  can then be shown to be distributed accordin
 An immediate question arises as to how to initialize sampling in \eqref{eq:backward}, since $$ p^*(\mathbf{x}_{0} \vert \mathbf{y}) $$ is already likely to be intractable in general.  
 
 In language modeling settings, we are often given access to prompts $\mathbf{x}_{0}$ via data or user interaction, so it is natural to focus on the posterior over responses to particular prompts,
+
 $$ \begin{align}
 p^*(\mathbf{x}_{1:T} \vert \mathbf{x}_{0}, \mathbf{y}) &= \frac{1}{\mathcal{Z}^{\mathbf{y}}_0(\mathbf{x}_{0})} p^{\text{ref}}(\mathbf{x}_{1:T}|\mathbf{x}_{0}) p(\mathbf{y} \vert \mathbf{x}_T) \label{eq:tgt2} \\
  \mathcal{Z}^{\mathbf{y}}_{0}(\mathbf{x}_{0}) &=\int p^{\text{ref}}(\mathbf{x}_{1:T}|\mathbf{x}_{0})p(\mathbf{y} \vert \mathbf{x}_T) d\mathbf{x}_{1:T} \nonumber
@@ -230,11 +234,14 @@ $$\begin{align}
 \end{align}
  $$
 --->
+
 $$\begin{align}
 V^{\mathbf{y}}_{0}(\mathbf{x}_{0}) &= \max \limits_{q(\mathbf{x}_{1:T}|\mathbf{x}_{0})} ~ \mathbb{E}_{q(\mathbf{x}_{1:T}|\mathbf{x}_{0})}\big[ \log p(\mathbf{y}\vert \mathbf{x}_{T}) \big] - D_{KL}\big[q(\mathbf{x}_{1:T}|\mathbf{x}_{0}): p^{\text{ref}}(\mathbf{x}_{1:T}|\mathbf{x}_{0})\big] \label{eq:elbo} \\
 &= \log \mathcal{Z}^{\mathbf{y}}_{0}(\mathbf{x}_{0})  \nonumber 
 \end{align} $$
+
 This identity can be see by solving for the the optimal $$q$$, subject to a normalization constraint
+
 $$\begin{align*}
  \frac{\delta}{\delta q}[\cdot] = \log p(\mathbf{y}\vert \mathbf{x}_{T}) - \log q(\mathbf{x}_{1:T}|\mathbf{x}_{0}) + \log p^{\text{ref}}(\mathbf{x}_{1:T}|\mathbf{x}_{0}) - 1 - \lambda(\mathbf{x}_0) = 0 \\
  \implies q^*(\mathbf{x}_{1:T} | \mathbf{x}_{0}) = \frac{1}{\mathcal{Z}^{\mathbf{y}}_{0}(\mathbf{x}_{0})}p^{\text{ref}}(\mathbf{x}_{1:T}|\mathbf{x}_{0}) p(\mathbf{y}\vert \mathbf{x}_{T})
@@ -253,6 +260,7 @@ The optimal *soft value function* also translates terminal target information to
 &= \log p^*(\mathbf{y} \vert \mathbf{x}_t) \label{eq:cond_lkd}
 \end{align}
  $$
+
 The soft value function measures the expected target likelihood under rollouts from the reference policy, which may involve generating tokens  $$ x_{t+1:T} $$  or running diffusion sampling until time  $$ T $$.
 In our setting with no intermediate reward or target information, we can recognize the expression for $V_{\mathbf{y}}^*(\mathbf{x}_t)$ in \eqref{eq:int_value} as a conditional likelihood in \eqref{eq:cond_lkd} <d-footnote>
 We will find rich applications in our the setting of no intermediate reward or targets, but refer the interested reader to <d-cite key="levine2018reinforcement"></d-cite>, <d-cite key="zhao2024probabilistic" section="B"></d-cite>, <d-cite key="lu2024guidance"></d-cite> for discussion of this case in various settings.</d-footnote>
@@ -278,7 +286,8 @@ where $$ V^{\mathbf{y}}_{t-1}(\mathbf{x}_{t-1}) = \log \mathcal{Z}^{\mathbf{y}}_
 #### Intermediate Marginal Distributions
 Finally, composing the optimal one-step policies, we can consider how the  target marginal distribution of $$\mathbf{x}_t$$ evolves over time.  In terms of the value function, we have
  <!---write the evolution of the marginals in terms of the value function--->
- $$\begin{align}
+
+$$\begin{align}
 p^*_{t}(\mathbf{x}_{t}\vert \mathbf{x}_{0}, \mathbf{y}) = \frac{1}{\mathcal{Z}^{\mathbf{y}}_{0}(\mathbf{x}_{0})} p^{\text{ref}}(\mathbf{x}_{t}|\mathbf{x}_{0}) \exp\{  V_\mathbf{y}^*(\mathbf{x}_{t}) \} \label{eq:marginal}
 \end{align}
  $$
@@ -286,6 +295,7 @@ p^*_{t}(\mathbf{x}_{t}\vert \mathbf{x}_{0}, \mathbf{y}) = \frac{1}{\mathcal{Z}^{
 <!---seen by marginalizing either forward  $$ p^*_{t}(\mathbf{x}_{t} \vert \mathbf{y})= \int \prod_{\tau=1}^{t-1} p^*_{\tau+1}(\mathbf{x}_{\tau+1} \vert \mathbf{x}_{\tau},\mathbf{y}) d\mathbf{x}_{0:t-1} $$ $$ = \frac{1}{\mathcal{Z}(\mathbf{y})} \int p^{\text{ref}}(\mathbf{x}_{0:t}) \exp\{  V_\mathbf{y}^*(\mathbf{x}_{t}) \} d\mathbf{x}_{0:t-1} $$  or backward in time  $$ p^*_{t}(\mathbf{x}_{t} \vert \mathbf{y}) = \frac{1}{\mathcal{Z}(\mathbf{y})} \int p^{\text{ref}}(\mathbf{x}_{t:T}) p(\mathbf{y} \vert \mathbf{x}_T) d\mathbf{x}_{t+1:T} $$ .
 Finally, we will find it useful to view the value function as measuring the log importance weights between intermediate posterior and prior marginals by rearranging \eqref{eq:marginal},
 --->
+
 where $$\mathbf{x}_0$$ conditioning only affects the $$p^{\text{ref}}$$ term.   We can equivalently express \eqref{eq:marginal} using likelihood ratios or logits,
 $$\begin{align}
 \log \frac{p^*(\mathbf{x}_{t} \vert \mathbf{x}_{0}, \mathbf{y})}{p^{\text{ref}}(\mathbf{x}_{t} | \mathbf{x}_{0})} = V^{\mathbf{y}}_{t}(\mathbf{x}_{t}) - V^{\mathbf{y}}_{0}(\mathbf{x}_{0}) = \log p^*(\mathbf{y} \vert \mathbf{x}_t) - \log \mathcal{Z}^{\mathbf{y}}_{0}(\mathbf{x}_{0})   \label{eq:logits}
@@ -331,11 +341,13 @@ The central message is that the optimal soft value function provides a "backward
 
 Remarkably, the gradient of the soft value function can also be shown to provide the optimal drift for a controlled diffusion process guiding samples to the endpoint target distribution.   
 To build up to this connection, we note that in the continuous-time limit, the KL divergence in \eqref{eq:elbo} is finite only for path measures or SDEs of the form 
+
 $$ 
 \begin{align}
 Q^{u}:  \quad d\mathbf{x}_t = \left( b_t^{\text{ref}}(\mathbf{x}_t ) + u_t(\mathbf{x}_t ) \right) dt + \sigma_t dW_t, \label{eq:csde}
 \end{align} 
 $$
+
 where $u_t$ satisfies mild regularity condtiions.   In this case, the KL divergence can be written as the time-integral of the norm of $$u_t$$ using the Girsanov theorem, and we can recognize the negative of the ELBO in \eqref{eq:elbo} as a stochastic optimal control problem
 
 $$
@@ -366,10 +378,13 @@ This is known as a martingale condition in the stochastic process literature, wh
 
 
 **Theorem 1** For any function satisfying \eqref{eq:value_martingale}, the stochastic process
+
 $$\begin{align}
 d\mathbf{x}_t = \left( b_t^{\text{ref}}(\mathbf{x}_t ) + \sigma^2 \nabla V_t(\mathbf{x}_t ) \right) dt + \sigma_t dW_t
 \end{align}$$
+
 realizes the transition dynamics
+
 $$\begin{align}
 p^V(\mathbf{x}_{t+s} | \mathbf{x}_t) = \frac{\exp\{ V_{t+s}(\mathbf{x}_{t+s})\} }{\exp\{ V_t(\mathbf{x}_t)\}} p^{\text{ref}}(\mathbf{x}_{t+s} | \mathbf{x}_t)
 \end{align}$$
@@ -404,16 +419,18 @@ $$\begin{align}
 w_{1:T}(\mathbf{x}_{1:T}) &= \prod_{t=1}^T \frac{p^*(\mathbf{x}_{t} \vert \mathbf{x}_{t-1}, \mathbf{y})}{q(\mathbf{x}_{t} \vert \mathbf{x}_{t-1})} \nonumber \\
 &= \prod_{t=1}^T \frac{p^*(\mathbf{y} \vert \mathbf{x}_t)}{p^*(\mathbf{y} \vert \mathbf{x}_{t-1})} \frac{p^{\text{ref}}(\mathbf{x}_{t} \vert \mathbf{x}_{t-1})}{q(\mathbf{x}_{t} \vert \mathbf{x}_{t-1})} =  \prod_{t=1}^T \frac{\exp\{ V^{\mathbf{y}}_{t}(\mathbf{x}_{t}) \}}{\exp\{ V^{\mathbf{y}}_{t-1}(\mathbf{x}_{t-1}) \}} \frac{p^{\text{ref}}(\mathbf{x}_{t} \vert \mathbf{x}_{t-1})}{q(\mathbf{x}_{t} \vert \mathbf{x}_{t-1})} \label{eq:weights}
 \end{align}$$
-<!---which has an equivalent expression using value functions $$ p^*(\mathbf{y} \vert \mathbf{x}_t)=\exp\{ V^{\mathbf{y}}_{t}(\mathbf{x}_{t}) \} $$, see \eqref{eq:next_token}. --->
-Note that the numerator at the final step includes the given target conditional $$ p(\mathbf{y} \vert \mathbf{x}_T) $$. 
 
-<!---<div style="width: 40%;  margin: auto; text-align: center;">
+<!---which has an equivalent expression using value functions $$ p^*(\mathbf{y} \vert \mathbf{x}_t)=\exp\{ V^{\mathbf{y}}_{t}(\mathbf{x}_{t}) \} $$, see \eqref{eq:next_token}. --->
+Note,the numerator at the final step includes the given target conditional $$ p(\mathbf{y} \vert \mathbf{x}_T) $$. 
+
+<div style="width: 40%;  margin: auto; text-align: center;">
         {% include figure.html path="assets/img/2025-01-06-soft-value-guidance/smc_small.png" class="img-fluid rounded z-depth-1" %}
 </div>
- --->
+<!----  
 <div style="width: 40%; margin: auto; text-align: center;">
     <img src="/assets/img/2025-01-06-soft-value-guidance/smc_small.png" class="img-fluid rounded z-depth-1" alt="SMC diagram">
 </div>
+--->
 
 
 The weights in \eqref{eq:weights} suggest a sequential resampling scheme at intermediate steps.   For a budget of $$K$$ samples and looping over timesteps $$ 1 \leq t \leq T $$, we can proceed with the following steps:
@@ -523,10 +540,12 @@ $$\begin{align}
 \end{align}$$
 
 This may also be viewed as minimizing the square of the log importance weights between full-sequence forward and reverse processes in \eqref{eq:unbiased}-\eqref{eq:weights}.<d-cite key="zhao2024probabilistic" section="App C1"></d-cite>
-Note that we may also construct one- or $c$-step consistency losses for any $$1 \leq t \leq t + c \leq T$$ using the compositional structure of the optimal values in \eqref{eq:elbot}-\eqref{eq:marginal} or decomposition of weights in \eqref{eq:weights},   
+Note that we may also construct one- or $c$-step consistency losses for any $$1 \leq t \leq t + c \leq T$$ using the compositional structure of the optimal values in \eqref{eq:elbot}-\eqref{eq:marginal} or decomposition of weights in \eqref{eq:weights},
+
 $$\begin{align}
 \min \limits_{\theta,\phi} \mathbb{E}_{\pi_s(\mathbf{x}_{1:T}\vert\mathbf{x}_0)}\left[\left(   V^{\theta}_{t+c}(\mathbf{x}_{t+c}) - V^{\theta}_{t}(\mathbf{x}_t)  -  \sum_{\tau=t+1}^{t+c} \log \frac{q^\phi(\mathbf{x}_{\tau} \vert \mathbf{x}_{\tau-1})}{p^{\text{ref}}(\mathbf{x}_{\tau} \vert \mathbf{x}_{\tau-1})} \right)^2 \right]
 \end{align}$$
+
 Non-zero intermediate rewards would also appear in the loss.
 
 
