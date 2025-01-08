@@ -1,25 +1,20 @@
 ---
 layout: distill
 title:  Posterior Inference in Sequential Models with Soft Value Guidance
-description:   Fine-tuning, controlled generation, and sampling in sequential models has attracted a flurry of recent attention in a variety of settings, particularly with the growing availability of powerful open-source pretrained models.   For language modeling in discrete spaces, we would often like to align responses with human preferences or generate correct responses to complex reasoning questions.  For diffusion models, we may be interested in steering generation to produce samples belonging a certain class, images which score highly on metrics such as realism, preference alignment, or text-to-image consistency, and proteins or molecules with desired properties such as synthesizability.  In all cases, we can imagine the task as sampling from a target probability distribution only known up to its unnormalized density or energy function.  Sampling from arbitrary target probability densities such as Boltzmann distribution of physical systems is itself a famous and difficult problem, for which diffusion-based samplers have recently been an active area of interest.  <br> <br> In this blog post, we draw on a rich history of work viewing stochastic control or reinforcement learning as probabilistic inference <d-cite key="levine2018reinforcement, kappen2005linear, todorov2009efficient, rawlik2013stochastic"></d-cite>, in order to provide a conceptual framework for recent developments in fine-tuning, guidance, alignment, and sampling using language and diffusion models with sequential structure.  A key role is played by the soft value function, which summarizes future information relevant to sampling from a target posterior at intermediate steps.   Further, we highlight that the optimal soft value function provides potentials for Sequential Monte Carlo resampling and the desired gradient guidance for diffusion processes.   This perspective allows drawing connections between methodologies used in various problem settings across both discrete and continuous spaces.
-
 date: 2025-01-06
 future: true
 htmlwidgets: false
 hidden: false
 use_math: true  
-mathjax: true   
+mathjax: true  
+# must be the exact same name as your blogpost
+bibliography: 2025-01-06-soft-value-guidance.bib  
 
 url: https://drive.google.com/file/d/17wPuQTQsswM9HnrswxX33Ei1DfZjA1An/view?usp=sharing
 
 # Anonymize when submitting
 authors:
   - name: Rob Brekelmans
-
-
-# must be the exact same name as your blogpost
-bibliography: 2025-01-06-soft-value-guidance.bib  
-
 
 toc:
   - name: Setting & Notation
@@ -49,10 +44,14 @@ toc:
 #     font-size: 16px;
 #   }
 ---
+<br>
 
+Fine-tuning, controlled generation, and sampling in sequential models has attracted a flurry of recent attention in a variety of settings, particularly with the growing availability of powerful open-source pretrained models.   For language modeling in discrete spaces, we would often like to align responses with human preferences or generate correct responses to complex reasoning questions.  For diffusion models, we may be interested in steering generation to produce samples belonging a certain class, images which score highly on metrics such as realism, preference alignment, or text-to-image consistency, and proteins or molecules with desired properties such as synthesizability.  In all cases, we can imagine the task as sampling from a target probability distribution only known up to its unnormalized density or energy function.  Sampling from arbitrary target probability densities such as Boltzmann distribution of physical systems is itself a famous and difficult problem, for which diffusion-based samplers have recently been an active area of interest.  <br> <br> In this blog post, we draw on a rich history of work viewing stochastic control or reinforcement learning as probabilistic inference <d-cite key="levine2018reinforcement, kappen2005linear, todorov2009efficient, rawlik2013stochastic"></d-cite>, in order to provide a conceptual framework for recent developments in fine-tuning, guidance, alignment, and sampling using language and diffusion models with sequential structure.  A key role is played by the soft value function, which summarizes future information relevant to sampling from a target posterior at intermediate steps.   Further, we highlight that the optimal soft value function provides potentials for Sequential Monte Carlo resampling and the desired gradient guidance for diffusion processes.   This perspective allows drawing connections between methodologies used in various problem settings across both discrete and continuous spaces.
 <!--- 
 In this blog post, we provide overview of these sampling or controlled generation tasks from a probabilistic perspective, which incorporates notions from soft reinforcement learning, stochastic optimal control, and Sequential Monte Carlo.  A key role will be played by the soft value function, which yields both importance sampling weights and gradient guidance for diffusion processes.   This perspective gives a single conceptual framework for guidance in discrete and continuous spaces, and draws connections between methodologies used in various problem settings. --->
-
+<!---
+description:   Fine-tuning, controlled generation, and sampling in sequential models has attracted a flurry of recent attention in a variety of settings, particularly with the growing availability of powerful open-source pretrained models.   For language modeling in discrete spaces, we would often like to align responses with human preferences or generate correct responses to complex reasoning questions.  For diffusion models, we may be interested in steering generation to produce samples belonging a certain class, images which score highly on metrics such as realism, preference alignment, or text-to-image consistency, and proteins or molecules with desired properties such as synthesizability.  In all cases, we can imagine the task as sampling from a target probability distribution only known up to its unnormalized density or energy function.  Sampling from arbitrary target probability densities such as Boltzmann distribution of physical systems is itself a famous and difficult problem, for which diffusion-based samplers have recently been an active area of interest.  <br> <br> In this blog post, we draw on a rich history of work viewing stochastic control or reinforcement learning as probabilistic inference <d-cite key="levine2018reinforcement, kappen2005linear, todorov2009efficient, rawlik2013stochastic"></d-cite>, in order to provide a conceptual framework for recent developments in fine-tuning, guidance, alignment, and sampling using language and diffusion models with sequential structure.  A key role is played by the soft value function, which summarizes future information relevant to sampling from a target posterior at intermediate steps.   Further, we highlight that the optimal soft value function provides potentials for Sequential Monte Carlo resampling and the desired gradient guidance for diffusion processes.   This perspective allows drawing connections between methodologies used in various problem settings across both discrete and continuous spaces.
+ --->
 ## Setting & Notation
 
  Assume we are given a pretrained model  $$ p^{\text{ref}} $$, which we will eventually seek to condition or modulate to achieve some target properties or distribution at the endpoint.   The reader should feel free to skip ahead to concrete examples in [Target Distributions](#target-distributions) and parse the notation within this context.
