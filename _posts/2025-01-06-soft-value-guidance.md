@@ -70,11 +70,14 @@ We can approximately model these continuous-time stochastic processes using disc
 --->
 We can approximately model this continuous-time stochastic processes using discrete-time Gaussian kernels for small  $$ dt $$ .   We consider the reference drift as an action  $$ a_t = b_t^{\text{ref}}(\mathbf{x}_t, t) $$ , with stochastic environment transitions drawn from  $$ p^{\text{env}}(\mathbf{x}_{t+1} \vert a_t = b_t^{\text{ref}}(\mathbf{x}_t,t), \mathbf{x}_t)= \mathcal{N}(\mathbf{x}_{t+1}; \mathbf{x}_t + b_t^{\text{ref}}(\mathbf{x}_t)dt , \sigma_{t} \mathbb{I}_d) $$  via Euler discretization.  For convenience,  we combine action selection and state transition into the policy  $$ p^{\text{ref}}_{t+1}(\mathbf{x}_{t+1} \vert \mathbf{x}_t) = \mathcal{N}(\mathbf{x}_{t+1}; \mathbf{x}_t +  b_t^{\text{ref}}(\mathbf{x}_t)dt, \sigma_{t} \mathbb{I}_d) $$ .
 
-
-<div class="row mt-3">
+<!--- <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/2025-01-06-soft-value-guidance/main_fig.jpg" class="img-fluid rounded z-depth-1" %}
     </div>
+</div> --->
+
+<div style="width: 40%; margin: auto; text-align: center;">
+    <img src="/assets/img/2025-01-06-soft-value-guidance/main_fig.jpg" class="img-fluid rounded z-depth-1" alt="Posterior Conditioning">
 </div>
 <div class="caption">
     Posterior Conditioning in both Language and Diffusion Models.  See <a href="#soft-value-function">Soft Value Function</a> and <a href="#stochastic-optimal-control">Stochastic Optimal Control</a> sections for the role of the value function.
@@ -404,8 +407,12 @@ w_{1:T}(\mathbf{x}_{1:T}) &= \prod_{t=1}^T \frac{p^*(\mathbf{x}_{t} \vert \mathb
 <!---which has an equivalent expression using value functions $$ p^*(\mathbf{y} \vert \mathbf{x}_t)=\exp\{ V^{\mathbf{y}}_{t}(\mathbf{x}_{t}) \} $$, see \eqref{eq:next_token}. --->
 Note that the numerator at the final step includes the given target conditional $$ p(\mathbf{y} \vert \mathbf{x}_T) $$. 
 
-<div style="width: 40%;  margin: auto; text-align: center;">
+<!---<div style="width: 40%;  margin: auto; text-align: center;">
         {% include figure.html path="assets/img/2025-01-06-soft-value-guidance/smc_small.png" class="img-fluid rounded z-depth-1" %}
+</div>
+ --->
+<div style="width: 40%; margin: auto; text-align: center;">
+    <img src="/assets/img/2025-01-06-soft-value-guidance/smc_small.png" class="img-fluid rounded z-depth-1" alt="SMC diagram">
 </div>
 
 
