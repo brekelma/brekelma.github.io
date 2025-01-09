@@ -414,7 +414,7 @@ In particular, assume we have solved the static
 
 ## Twisted Sequential Monte Carlo Sampling
 
-In both the language and diffusion cases, we can leverage Sequential Monte Carlo to resample a set of $K$ partial sequences or intermediate states based on the (optimal) soft values, which has the effect of prioritizing sequences or states which we expect to achieve likelihood under the final-step target distribution.  
+In both the language and diffusion cases, we can leverage Sequential Monte Carlo to resample a set of $K$ partial sequences or intermediate states based on the (optimal) soft values, which has the effect of prioritizing sequences or states which we expect to achieve high likelihood under the final-step target distribution.  
 
 
 To introduce this importance sampling technique, we consider the unnormalized $$ \tilde{p}^{*}(\mathbf{x}_{1:T} \vert \mathbf{x}_0, \mathbf{y}) = p^{\text{ref}}(\mathbf{x}_{1:T} \vert \mathbf{x}_{0}) p(\mathbf{y} \vert \mathbf{x}_T) $$ (see \eqref{eq:tgt2}), which omits the intractable normalization constant $$ \mathcal{Z}^\mathbf{y}_0(\mathbf{x}_0)$$ and thus is easy to evaluate.  For a given proposal or approximate posterior $$ q(\mathbf{x}_{1:T} \vert \mathbf{x}_0) $$ (which may be learned as in [Objectives](#objective-functions) below, or simply set to $$ p^{\text{ref}}$$ ), consider the importance weights in the extended space,
